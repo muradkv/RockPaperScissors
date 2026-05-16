@@ -30,26 +30,17 @@ struct ContentView: View {
             Spacer()
             Spacer()
             
-            HStack(spacing: 30) {
-                Button {
+            HStack(spacing: 20) {
+                GameButtonView(emoji: "✊", label: "Rock") {
                     viewModel.processPlayerMove(.rock)
-                } label: {
-                    Text("Rock")
-                        .font(.title)
                 }
                 
-                Button {
-                    viewModel.processPlayerMove(.paper)
-                } label: {
-                    Text("Paper")
-                        .font(.title)
-                }
-                
-                Button {
+                GameButtonView(emoji: "✌️", label: "Scissors") {
                     viewModel.processPlayerMove(.scissors)
-                } label: {
-                    Text("Scissors")
-                        .font(.title)
+                }
+                
+                GameButtonView(emoji: "✋", label: "Paper") {
+                    viewModel.processPlayerMove(.paper)
                 }
             }
             
