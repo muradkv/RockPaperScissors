@@ -19,8 +19,10 @@ struct ContentView: View {
                     .font(.title)
                 Text(viewModel.playerMustWin ? "You must WIN this round" : "You must LOSE this round")
                     .font(.title2)
-                Text("Current app choice \(viewModel.computerMove)")
-                    .font(.title3)
+                ComputerChoiceView(
+                    emoji: viewModel.computerMove.emoji,
+                    label: viewModel.computerMove.label
+                )
             }
             
             Text("Score \(viewModel.score)")
@@ -31,15 +33,24 @@ struct ContentView: View {
             Spacer()
             
             HStack(spacing: 20) {
-                GameButtonView(emoji: "✊", label: "Rock") {
+                GameButtonView(
+                    emoji: Choices.rock.emoji,
+                    label: Choices.rock.label
+                ) {
                     viewModel.processPlayerMove(.rock)
                 }
                 
-                GameButtonView(emoji: "✌️", label: "Scissors") {
+                GameButtonView(
+                    emoji: Choices.scissors.emoji,
+                    label: Choices.scissors.label
+                ) {
                     viewModel.processPlayerMove(.scissors)
                 }
                 
-                GameButtonView(emoji: "✋", label: "Paper") {
+                GameButtonView(
+                    emoji: Choices.paper.emoji,
+                    label: Choices.paper.label
+                ) {
                     viewModel.processPlayerMove(.paper)
                 }
             }
