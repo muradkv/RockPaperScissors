@@ -16,20 +16,31 @@ struct ContentView: View {
                 .ignoresSafeArea()
             
             VStack {
-                VStack(spacing: 30) {
+                VStack(spacing: 5) {
                     Text("Round \(viewModel.currentRound)")
                         .font(.system(size: 30, weight: .semibold, design: .rounded))
-                        .padding(.bottom)
-                    
-                    VStack(spacing: 25) {
-                        Text(viewModel.playerMustWin ? "You must WIN this round" : "You must LOSE this round")
-                            .font(.title2)
+                    HStack(spacing: 8) {
+                        ForEach(0..<viewModel.totalRounds, id: \.self) { index in
+                            Circle()
+                                .frame(width: 10, height: 10)
+                                .foregroundColor(
+                                    index < viewModel.currentRound ? .blue : .gray.opacity(0.3)
+                                )
+                        }
                     }
+                }
+                .padding(.bottom, 40)
+                
+                VStack(spacing: 20) {
+                    Text(viewModel.playerMustWin ? "You must WIN this round" : "You must LOSE this round")
+                        .font(.title2)
+                    
                     ComputerChoiceView(
                         emoji: viewModel.computerMove.emoji,
                         label: viewModel.computerMove.label
                     )
                 }
+                
                                 
                 Text("Score \(viewModel.score)")
                     .font(.system(size: 46, weight: .heavy, design: .rounded))

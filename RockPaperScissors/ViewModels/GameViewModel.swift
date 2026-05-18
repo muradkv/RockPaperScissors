@@ -14,7 +14,7 @@ class GameViewModel: ObservableObject {
     @Published private(set) var playerMustWin = true
     @Published var gameEnded = false
     
-    private let totalRounds = 5
+    let totalRounds = 5
     
     init() {
         prepareNextRound()
